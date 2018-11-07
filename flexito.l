@@ -13,9 +13,8 @@ caracter [a-zA-Z]
 cadena {caracter}+
 identificador [a-z][a-z0-9]*
 real {entero}\.{entero}
-keyword "if"|"while"|"for"|"then"|"do"|"else"|"begin"|"end"
-opRelacional "<"|">"|"<>"|"<="|">="|"="|"=="
-opLogico "&"|"|"|"¬"|"&&"|"||"|"!"
+keyword "pos"|"color"|"("|")"|"da valor"|"editar"|"termino"|"end"
+opRelacional "="
 opAritmetico "+"|"-"|"*"|"/"|"**"
 
 %%
