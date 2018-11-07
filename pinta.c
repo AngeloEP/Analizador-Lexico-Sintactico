@@ -2,7 +2,7 @@
 #include <graphics.h>
 
 
-void main(){
+int main(){
 	int gdriver=DETECT,gmode;
 	initgraph(&gdriver,&gmode,"");
 	setcolor(2);
