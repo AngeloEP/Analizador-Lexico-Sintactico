@@ -1,3 +1,5 @@
-bin/prog
-bin/analizador
+bin/*
+lex.yy.c
+bisoncito.tab.h
+bisoncito.tab.c
 lex.yy.c
