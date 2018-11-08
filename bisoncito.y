@@ -47,7 +47,7 @@
                | DAVALOR ID IGUAL COLO	{printf(" se le asigna color"); }
                 ;
 	
-	ASIG_POS: POS  A_PARENTESIS  VALOR COMA VALOR  C_PARENTESIS;
+	ASIG_POS: POS  A_PARENTESIS  VALOR COMA VALOR  C_PARENTESIS	{ printf("Se asigna pocisión al puntero"); };
 	
 	MOVER:   DERECHA A_PARENTESIS VALOR C_PARENTESIS	{ printf(" Derecha"); }
            | IZQUIERDA A_PARENTESIS VALOR C_PARENTESIS	{ printf(" Izquierda"); }
@@ -64,6 +64,7 @@
           | AZUL	{ printf(" azul"); }
           | AMARILLO{ printf(" amarillo"); }
           | BLANCO	{ printf(" blanco"); }
+          | VALOR {}
           ;
 
 %%

@@ -1,13 +1,16 @@
 editar
 color(rojo)
-davalor A = 2
-pos(1,1)
-arr(A)
-aba(A)
-der(A)
-izq(A)
-color(amarillo)
-color(amarillo)
-color(blanco)
-pos(2,A)
+pos(30,30)
+der(2)
+aba(4)
+davalor B=1
+izq(B)
+aba(2)
+der(3)
+davalor C=200
+pos(C,30)
+davalor D=verde
+color(D)
+aba(8)
+der(4)
 termino
