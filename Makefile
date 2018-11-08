@@ -1,4 +1,5 @@
 all:
-	g++ pinta.c -o bin/prog -lgraph
+	bison -d bisoncito.y
 	flex flexito.l
-	gcc lex.yy.c -o bin/analizador -lfl
+	gcc bisoncito.tab.c lex.yy.c -o bin/analizador -lfl
+	gcc pinta.c -o bin/prog -lgraph
