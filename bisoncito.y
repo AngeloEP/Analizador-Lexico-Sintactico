@@ -27,7 +27,7 @@
 %start PROG
 
 %% 
-	PROG: editar INST termino;
+	PROG: editar INST TERMINO;
 
 	INST: INST INST 
          | ASIG_COLOR
@@ -35,6 +35,8 @@
          | MOVER
          | ASIG_VALOR
           ;
+
+	TERMINO: termino  {exit(0);};
 
 	ASIG_COLOR: COLOR A_PARENTESIS COLO C_PARENTESIS   { printf(" el color se cambiara"); };
 	
