@@ -1,5 +1,7 @@
 /* DECLARACIONES */
+%option noyywrap
 %{
+	#include "bisoncito.tab.h"
 	#include <stdio.h>
 	#include <stdlib.h>
 
@@ -11,28 +13,40 @@ digito [0-9]
 entero {digito}+
 caracter [a-zA-Z]
 cadena {caracter}+
-identificador [a-z][a-z0-9]*
-real {entero}\.{entero}
-keyword "pos"|"color"|"("|")"|"da valor"|"editar"|"termino"|"end"
+identificador [a-zA-Z][a-zA-Z0-9]*
+keyword "pos"|"color"|"("|")"|"da valor "|"editar"|"termino"
 opRelacional "="
 opAritmetico "+"|"-"|"*"|"/"|"**"
 
 %%
 
-{digito} {printf("\n TOKEN = digito ");ECHO;ncaracteres++;}
-{entero} {printf("\n TOKEN = Entero ");ECHO;}
-{real} {printf("\n TOKEN = Numero Real ");ECHO;}
-{keyword} {printf("\n TOKEN = keyword : ");ECHO;}
-{identificador} {printf("\n TOKEN = Identificador : ");ECHO;}
-{opRelacional} {printf("\n TOKEN = opRelacional : ");ECHO;}
-{opLogico} {printf("\n TOKEN = opLogico : ");ECHO;}
-{opAritmetico} {printf("\n TOKEN = opAritmetico : ");ECHO;}
+{entero} 											{yylval=atoi(yytext);return CONST;}
+
+"editar"											{return editar;}
+","													{return COMA;}
+"pos"|"POS"											{return POS;}
+"color"|"COLOR"										{return COLOR;}
+"davalor "|"DAVALOR "								{return DAVALOR;}
+"="|" = "|" ="|"= "									{return IGUAL;}
+"arr"|"ARR"											{return ARRIBA;}
+"aba"|"ABA"											{return ABAJO;}
+"der"|"DER"											{return DERECHA;}
+"izq"|"IZQ"											{return IZQUIERDA;}
+"rojo"|"ROJO"										{return ROJO;}
+"verde"|"VERDE"										{return VERDE;}
+"azul"|"AZUL"										{return AZUL;}
+"amarillo"|"AMARILLO"								{return AMARILLO;}
+"blanco"|"BLANCO"									{return BLANCO;}
+"("													{return A_PARENTESIS;}
+")"													{return C_PARENTESIS;}
+"termino"											{return termino;}
+{identificador}										{return ID;}
+
 . {printf("\n desconocido \n");}
 
 %%
 
-int main(){
+/*int main(){
 	yylex();
-	//printf("\n La cantidad de caracteres es: %d \n",ncaracteres );
 	printf("FINALIZO EL ANALIZADOR!\n" );
-}
+}*/

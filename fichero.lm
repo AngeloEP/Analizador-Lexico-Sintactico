@@ -1,0 +1,13 @@
+editar
+color(rojo)
+davalor A = 2
+pos(1,1)
+arr(A)
+aba(A)
+der(A)
+izq(A)
+color(amarillo)
+color(amarillo)
+color(blanco)
+pos(2,A)
+termino
