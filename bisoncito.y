@@ -1,6 +1,8 @@
 
 %{
 	#include<stdio.h>
+      #include<stdlib.h>
+      extern FILE *yyin;
 %}
 
 %token ARRIBA
@@ -10,6 +12,7 @@
 %token ROJO
 %token VERDE
 %token AZUL
+
 %token AMARILLO
 %token BLANCO
 %token DAVALOR
@@ -65,8 +68,11 @@
 
 %%
 main(){
-	if(yyparse()==0)
-	printf("\nAnalisis concluido sin errores\n");
+      FILE *fp;
+      fp = fopen("fichero.lm","r");
+      if(!fp){printf("Error\n");exit(1);}
+      yyin = fp;
+      yyparse();
 }
 yyerror(char* mensaje){
 	printf("\nAnalisis suspendido");
