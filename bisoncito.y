@@ -64,7 +64,7 @@
           | AZUL	{ printf(" azul"); }
           | AMARILLO{ printf(" amarillo"); }
           | BLANCO	{ printf(" blanco"); }
-          | VALOR {}
+          | ID 		{$$ = $1; printf("ID");}
           ;
 
 %%
