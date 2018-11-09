@@ -1,0 +1,791 @@
+Estado 25 conflictos: 7 desplazamiento/reducción
+Estado 61 conflictos: 8 reducción/reducción
+
+
+Gramática
+
+    0 $accept: PROG $end
+
+    1 $@1: %empty
+
+    2 PROG: editar $@1 INST TERMINO
+
+    3 INST: INST INST
+    4     | ASIG_COLOR
+    5     | ASIG_POS
+    6     | MOVER
+    7     | ASIG_VALOR
+
+    8 TERMINO: termino
+
+    9 $@2: %empty
+
+   10 $@3: %empty
+
+   11 ASIG_COLOR: COLOR $@2 A_PARENTESIS $@3 COLO C_PARENTESIS
+
+   12 $@4: %empty
+
+   13 $@5: %empty
+
+   14 ASIG_VALOR: DAVALOR $@4 IDENTIFICADOR IGUAL $@5 VARIABLE
+
+   15 VARIABLE: VALOR
+   16         | COLO
+
+   17 IDENTIFICADOR: ID
+
+   18 $@6: %empty
+
+   19 $@7: %empty
+
+   20 $@8: %empty
+
+   21 ASIG_POS: POS $@6 A_PARENTESIS $@7 VALOR COMA $@8 VALOR C_PARENTESIS
+
+   22 $@9: %empty
+
+   23 $@10: %empty
+
+   24 MOVER: DERECHA $@9 A_PARENTESIS $@10 VALOR C_PARENTESIS
+
+   25 $@11: %empty
+
+   26 $@12: %empty
+
+   27 MOVER: IZQUIERDA $@11 A_PARENTESIS $@12 VALOR C_PARENTESIS
+
+   28 $@13: %empty
+
+   29 $@14: %empty
+
+   30 MOVER: ARRIBA $@13 A_PARENTESIS $@14 VALOR C_PARENTESIS
+
+   31 $@15: %empty
+
+   32 $@16: %empty
+
+   33 MOVER: ABAJO $@15 A_PARENTESIS $@16 VALOR C_PARENTESIS
+
+   34 VALOR: ID
+   35      | CONST
+
+   36 COLO: ROJO
+   37     | VERDE
+   38     | AZUL
+   39     | AMARILLO
+   40     | BLANCO
+   41     | ID
+
+
+Terminales con las reglas donde aparecen
+
+$end (0) 0
+error (256)
+ARRIBA (258) 30
+ABAJO (259) 33
+DERECHA (260) 24
+IZQUIERDA (261) 27
+ROJO (262) 36
+VERDE (263) 37
+AZUL (264) 38
+AMARILLO (265) 39
+BLANCO (266) 40
+DAVALOR (267) 14
+IGUAL (268) 14
+COLOR (269) 11
+POS (270) 21
+COMA (271) 21
+CONST (272) 35
+ID (273) 17 34 41
+A_PARENTESIS (274) 11 21 24 27 30 33
+C_PARENTESIS (275) 11 21 24 27 30 33
+termino (276) 8
+editar (277) 2
+
+
+No terminales con las reglas donde aparecen
+
+$accept (23)
+    en la izquierda: 0
+PROG (24)
+    en la izquierda: 2, en la derecha: 0
+$@1 (25)
+    en la izquierda: 1, en la derecha: 2
+INST (26)
+    en la izquierda: 3 4 5 6 7, en la derecha: 2 3
+TERMINO (27)
+    en la izquierda: 8, en la derecha: 2
+ASIG_COLOR (28)
+    en la izquierda: 11, en la derecha: 4
+$@2 (29)
+    en la izquierda: 9, en la derecha: 11
+$@3 (30)
+    en la izquierda: 10, en la derecha: 11
+ASIG_VALOR (31)
+    en la izquierda: 14, en la derecha: 7
+$@4 (32)
+    en la izquierda: 12, en la derecha: 14
+$@5 (33)
+    en la izquierda: 13, en la derecha: 14
+VARIABLE (34)
+    en la izquierda: 15 16, en la derecha: 14
+IDENTIFICADOR (35)
+    en la izquierda: 17, en la derecha: 14
+ASIG_POS (36)
+    en la izquierda: 21, en la derecha: 5
+$@6 (37)
+    en la izquierda: 18, en la derecha: 21
+$@7 (38)
+    en la izquierda: 19, en la derecha: 21
+$@8 (39)
+    en la izquierda: 20, en la derecha: 21
+MOVER (40)
+    en la izquierda: 24 27 30 33, en la derecha: 6
+$@9 (41)
+    en la izquierda: 22, en la derecha: 24
+$@10 (42)
+    en la izquierda: 23, en la derecha: 24
+$@11 (43)
+    en la izquierda: 25, en la derecha: 27
+$@12 (44)
+    en la izquierda: 26, en la derecha: 27
+$@13 (45)
+    en la izquierda: 28, en la derecha: 30
+$@14 (46)
+    en la izquierda: 29, en la derecha: 30
+$@15 (47)
+    en la izquierda: 31, en la derecha: 33
+$@16 (48)
+    en la izquierda: 32, en la derecha: 33
+VALOR (49)
+    en la izquierda: 34 35, en la derecha: 15 21 24 27 30 33
+COLO (50)
+    en la izquierda: 36 37 38 39 40 41, en la derecha: 11 16
+
+
+Estado 0
+
+    0 $accept: . PROG $end
+
+    editar  desplazar e ir al estado 1
+
+    PROG  ir al estado 2
+
+
+Estado 1
+
+    2 PROG: editar . $@1 INST TERMINO
+
+    $default  reduce usando la regla 1 ($@1)
+
+    $@1  ir al estado 3
+
+
+Estado 2
+
+    0 $accept: PROG . $end
+
+    $end  desplazar e ir al estado 4
+
+
+Estado 3
+
+    2 PROG: editar $@1 . INST TERMINO
+
+    ARRIBA     desplazar e ir al estado 5
+    ABAJO      desplazar e ir al estado 6
+    DERECHA    desplazar e ir al estado 7
+    IZQUIERDA  desplazar e ir al estado 8
+    DAVALOR    desplazar e ir al estado 9
+    COLOR      desplazar e ir al estado 10
+    POS        desplazar e ir al estado 11
+
+    INST        ir al estado 12
+    ASIG_COLOR  ir al estado 13
+    ASIG_VALOR  ir al estado 14
+    ASIG_POS    ir al estado 15
+    MOVER       ir al estado 16
+
+
+Estado 4
+
+    0 $accept: PROG $end .
+
+    $default  aceptar
+
+
+Estado 5
+
+   30 MOVER: ARRIBA . $@13 A_PARENTESIS $@14 VALOR C_PARENTESIS
+
+    $default  reduce usando la regla 28 ($@13)
+
+    $@13  ir al estado 17
+
+
+Estado 6
+
+   33 MOVER: ABAJO . $@15 A_PARENTESIS $@16 VALOR C_PARENTESIS
+
+    $default  reduce usando la regla 31 ($@15)
+
+    $@15  ir al estado 18
+
+
+Estado 7
+
+   24 MOVER: DERECHA . $@9 A_PARENTESIS $@10 VALOR C_PARENTESIS
+
+    $default  reduce usando la regla 22 ($@9)
+
+    $@9  ir al estado 19
+
+
+Estado 8
+
+   27 MOVER: IZQUIERDA . $@11 A_PARENTESIS $@12 VALOR C_PARENTESIS
+
+    $default  reduce usando la regla 25 ($@11)
+
+    $@11  ir al estado 20
+
+
+Estado 9
+
+   14 ASIG_VALOR: DAVALOR . $@4 IDENTIFICADOR IGUAL $@5 VARIABLE
+
+    $default  reduce usando la regla 12 ($@4)
+
+    $@4  ir al estado 21
+
+
+Estado 10
+
+   11 ASIG_COLOR: COLOR . $@2 A_PARENTESIS $@3 COLO C_PARENTESIS
+
+    $default  reduce usando la regla 9 ($@2)
+
+    $@2  ir al estado 22
+
+
+Estado 11
+
+   21 ASIG_POS: POS . $@6 A_PARENTESIS $@7 VALOR COMA $@8 VALOR C_PARENTESIS
+
+    $default  reduce usando la regla 18 ($@6)
+
+    $@6  ir al estado 23
+
+
+Estado 12
+
+    2 PROG: editar $@1 INST . TERMINO
+    3 INST: INST . INST
+
+    ARRIBA     desplazar e ir al estado 5
+    ABAJO      desplazar e ir al estado 6
+    DERECHA    desplazar e ir al estado 7
+    IZQUIERDA  desplazar e ir al estado 8
+    DAVALOR    desplazar e ir al estado 9
+    COLOR      desplazar e ir al estado 10
+    POS        desplazar e ir al estado 11
+    termino    desplazar e ir al estado 24
+
+    INST        ir al estado 25
+    TERMINO     ir al estado 26
+    ASIG_COLOR  ir al estado 13
+    ASIG_VALOR  ir al estado 14
+    ASIG_POS    ir al estado 15
+    MOVER       ir al estado 16
+
+
+Estado 13
+
+    4 INST: ASIG_COLOR .
+
+    $default  reduce usando la regla 4 (INST)
+
+
+Estado 14
+
+    7 INST: ASIG_VALOR .
+
+    $default  reduce usando la regla 7 (INST)
+
+
+Estado 15
+
+    5 INST: ASIG_POS .
+
+    $default  reduce usando la regla 5 (INST)
+
+
+Estado 16
+
+    6 INST: MOVER .
+
+    $default  reduce usando la regla 6 (INST)
+
+
+Estado 17
+
+   30 MOVER: ARRIBA $@13 . A_PARENTESIS $@14 VALOR C_PARENTESIS
+
+    A_PARENTESIS  desplazar e ir al estado 27
+
+
+Estado 18
+
+   33 MOVER: ABAJO $@15 . A_PARENTESIS $@16 VALOR C_PARENTESIS
+
+    A_PARENTESIS  desplazar e ir al estado 28
+
+
+Estado 19
+
+   24 MOVER: DERECHA $@9 . A_PARENTESIS $@10 VALOR C_PARENTESIS
+
+    A_PARENTESIS  desplazar e ir al estado 29
+
+
+Estado 20
+
+   27 MOVER: IZQUIERDA $@11 . A_PARENTESIS $@12 VALOR C_PARENTESIS
+
+    A_PARENTESIS  desplazar e ir al estado 30
+
+
+Estado 21
+
+   14 ASIG_VALOR: DAVALOR $@4 . IDENTIFICADOR IGUAL $@5 VARIABLE
+
+    ID  desplazar e ir al estado 31
+
+    IDENTIFICADOR  ir al estado 32
+
+
+Estado 22
+
+   11 ASIG_COLOR: COLOR $@2 . A_PARENTESIS $@3 COLO C_PARENTESIS
+
+    A_PARENTESIS  desplazar e ir al estado 33
+
+
+Estado 23
+
+   21 ASIG_POS: POS $@6 . A_PARENTESIS $@7 VALOR COMA $@8 VALOR C_PARENTESIS
+
+    A_PARENTESIS  desplazar e ir al estado 34
+
+
+Estado 24
+
+    8 TERMINO: termino .
+
+    $default  reduce usando la regla 8 (TERMINO)
+
+
+Estado 25
+
+    3 INST: INST . INST
+    3     | INST INST .
+
+    ARRIBA     desplazar e ir al estado 5
+    ABAJO      desplazar e ir al estado 6
+    DERECHA    desplazar e ir al estado 7
+    IZQUIERDA  desplazar e ir al estado 8
+    DAVALOR    desplazar e ir al estado 9
+    COLOR      desplazar e ir al estado 10
+    POS        desplazar e ir al estado 11
+
+    ARRIBA     [reduce usando la regla 3 (INST)]
+    ABAJO      [reduce usando la regla 3 (INST)]
+    DERECHA    [reduce usando la regla 3 (INST)]
+    IZQUIERDA  [reduce usando la regla 3 (INST)]
+    DAVALOR    [reduce usando la regla 3 (INST)]
+    COLOR      [reduce usando la regla 3 (INST)]
+    POS        [reduce usando la regla 3 (INST)]
+    $default   reduce usando la regla 3 (INST)
+
+    INST        ir al estado 25
+    ASIG_COLOR  ir al estado 13
+    ASIG_VALOR  ir al estado 14
+    ASIG_POS    ir al estado 15
+    MOVER       ir al estado 16
+
+
+Estado 26
+
+    2 PROG: editar $@1 INST TERMINO .
+
+    $default  reduce usando la regla 2 (PROG)
+
+
+Estado 27
+
+   30 MOVER: ARRIBA $@13 A_PARENTESIS . $@14 VALOR C_PARENTESIS
+
+    $default  reduce usando la regla 29 ($@14)
+
+    $@14  ir al estado 35
+
+
+Estado 28
+
+   33 MOVER: ABAJO $@15 A_PARENTESIS . $@16 VALOR C_PARENTESIS
+
+    $default  reduce usando la regla 32 ($@16)
+
+    $@16  ir al estado 36
+
+
+Estado 29
+
+   24 MOVER: DERECHA $@9 A_PARENTESIS . $@10 VALOR C_PARENTESIS
+
+    $default  reduce usando la regla 23 ($@10)
+
+    $@10  ir al estado 37
+
+
+Estado 30
+
+   27 MOVER: IZQUIERDA $@11 A_PARENTESIS . $@12 VALOR C_PARENTESIS
+
+    $default  reduce usando la regla 26 ($@12)
+
+    $@12  ir al estado 38
+
+
+Estado 31
+
+   17 IDENTIFICADOR: ID .
+
+    $default  reduce usando la regla 17 (IDENTIFICADOR)
+
+
+Estado 32
+
+   14 ASIG_VALOR: DAVALOR $@4 IDENTIFICADOR . IGUAL $@5 VARIABLE
+
+    IGUAL  desplazar e ir al estado 39
+
+
+Estado 33
+
+   11 ASIG_COLOR: COLOR $@2 A_PARENTESIS . $@3 COLO C_PARENTESIS
+
+    $default  reduce usando la regla 10 ($@3)
+
+    $@3  ir al estado 40
+
+
+Estado 34
+
+   21 ASIG_POS: POS $@6 A_PARENTESIS . $@7 VALOR COMA $@8 VALOR C_PARENTESIS
+
+    $default  reduce usando la regla 19 ($@7)
+
+    $@7  ir al estado 41
+
+
+Estado 35
+
+   30 MOVER: ARRIBA $@13 A_PARENTESIS $@14 . VALOR C_PARENTESIS
+
+    CONST  desplazar e ir al estado 42
+    ID     desplazar e ir al estado 43
+
+    VALOR  ir al estado 44
+
+
+Estado 36
+
+   33 MOVER: ABAJO $@15 A_PARENTESIS $@16 . VALOR C_PARENTESIS
+
+    CONST  desplazar e ir al estado 42
+    ID     desplazar e ir al estado 43
+
+    VALOR  ir al estado 45
+
+
+Estado 37
+
+   24 MOVER: DERECHA $@9 A_PARENTESIS $@10 . VALOR C_PARENTESIS
+
+    CONST  desplazar e ir al estado 42
+    ID     desplazar e ir al estado 43
+
+    VALOR  ir al estado 46
+
+
+Estado 38
+
+   27 MOVER: IZQUIERDA $@11 A_PARENTESIS $@12 . VALOR C_PARENTESIS
+
+    CONST  desplazar e ir al estado 42
+    ID     desplazar e ir al estado 43
+
+    VALOR  ir al estado 47
+
+
+Estado 39
+
+   14 ASIG_VALOR: DAVALOR $@4 IDENTIFICADOR IGUAL . $@5 VARIABLE
+
+    $default  reduce usando la regla 13 ($@5)
+
+    $@5  ir al estado 48
+
+
+Estado 40
+
+   11 ASIG_COLOR: COLOR $@2 A_PARENTESIS $@3 . COLO C_PARENTESIS
+
+    ROJO      desplazar e ir al estado 49
+    VERDE     desplazar e ir al estado 50
+    AZUL      desplazar e ir al estado 51
+    AMARILLO  desplazar e ir al estado 52
+    BLANCO    desplazar e ir al estado 53
+    ID        desplazar e ir al estado 54
+
+    COLO  ir al estado 55
+
+
+Estado 41
+
+   21 ASIG_POS: POS $@6 A_PARENTESIS $@7 . VALOR COMA $@8 VALOR C_PARENTESIS
+
+    CONST  desplazar e ir al estado 42
+    ID     desplazar e ir al estado 43
+
+    VALOR  ir al estado 56
+
+
+Estado 42
+
+   35 VALOR: CONST .
+
+    $default  reduce usando la regla 35 (VALOR)
+
+
+Estado 43
+
+   34 VALOR: ID .
+
+    $default  reduce usando la regla 34 (VALOR)
+
+
+Estado 44
+
+   30 MOVER: ARRIBA $@13 A_PARENTESIS $@14 VALOR . C_PARENTESIS
+
+    C_PARENTESIS  desplazar e ir al estado 57
+
+
+Estado 45
+
+   33 MOVER: ABAJO $@15 A_PARENTESIS $@16 VALOR . C_PARENTESIS
+
+    C_PARENTESIS  desplazar e ir al estado 58
+
+
+Estado 46
+
+   24 MOVER: DERECHA $@9 A_PARENTESIS $@10 VALOR . C_PARENTESIS
+
+    C_PARENTESIS  desplazar e ir al estado 59
+
+
+Estado 47
+
+   27 MOVER: IZQUIERDA $@11 A_PARENTESIS $@12 VALOR . C_PARENTESIS
+
+    C_PARENTESIS  desplazar e ir al estado 60
+
+
+Estado 48
+
+   14 ASIG_VALOR: DAVALOR $@4 IDENTIFICADOR IGUAL $@5 . VARIABLE
+
+    ROJO      desplazar e ir al estado 49
+    VERDE     desplazar e ir al estado 50
+    AZUL      desplazar e ir al estado 51
+    AMARILLO  desplazar e ir al estado 52
+    BLANCO    desplazar e ir al estado 53
+    CONST     desplazar e ir al estado 42
+    ID        desplazar e ir al estado 61
+
+    VARIABLE  ir al estado 62
+    VALOR     ir al estado 63
+    COLO      ir al estado 64
+
+
+Estado 49
+
+   36 COLO: ROJO .
+
+    $default  reduce usando la regla 36 (COLO)
+
+
+Estado 50
+
+   37 COLO: VERDE .
+
+    $default  reduce usando la regla 37 (COLO)
+
+
+Estado 51
+
+   38 COLO: AZUL .
+
+    $default  reduce usando la regla 38 (COLO)
+
+
+Estado 52
+
+   39 COLO: AMARILLO .
+
+    $default  reduce usando la regla 39 (COLO)
+
+
+Estado 53
+
+   40 COLO: BLANCO .
+
+    $default  reduce usando la regla 40 (COLO)
+
+
+Estado 54
+
+   41 COLO: ID .
+
+    $default  reduce usando la regla 41 (COLO)
+
+
+Estado 55
+
+   11 ASIG_COLOR: COLOR $@2 A_PARENTESIS $@3 COLO . C_PARENTESIS
+
+    C_PARENTESIS  desplazar e ir al estado 65
+
+
+Estado 56
+
+   21 ASIG_POS: POS $@6 A_PARENTESIS $@7 VALOR . COMA $@8 VALOR C_PARENTESIS
+
+    COMA  desplazar e ir al estado 66
+
+
+Estado 57
+
+   30 MOVER: ARRIBA $@13 A_PARENTESIS $@14 VALOR C_PARENTESIS .
+
+    $default  reduce usando la regla 30 (MOVER)
+
+
+Estado 58
+
+   33 MOVER: ABAJO $@15 A_PARENTESIS $@16 VALOR C_PARENTESIS .
+
+    $default  reduce usando la regla 33 (MOVER)
+
+
+Estado 59
+
+   24 MOVER: DERECHA $@9 A_PARENTESIS $@10 VALOR C_PARENTESIS .
+
+    $default  reduce usando la regla 24 (MOVER)
+
+
+Estado 60
+
+   27 MOVER: IZQUIERDA $@11 A_PARENTESIS $@12 VALOR C_PARENTESIS .
+
+    $default  reduce usando la regla 27 (MOVER)
+
+
+Estado 61
+
+   34 VALOR: ID .
+   41 COLO: ID .
+
+    ARRIBA     reduce usando la regla 34 (VALOR)
+    ARRIBA     [reduce usando la regla 41 (COLO)]
+    ABAJO      reduce usando la regla 34 (VALOR)
+    ABAJO      [reduce usando la regla 41 (COLO)]
+    DERECHA    reduce usando la regla 34 (VALOR)
+    DERECHA    [reduce usando la regla 41 (COLO)]
+    IZQUIERDA  reduce usando la regla 34 (VALOR)
+    IZQUIERDA  [reduce usando la regla 41 (COLO)]
+    DAVALOR    reduce usando la regla 34 (VALOR)
+    DAVALOR    [reduce usando la regla 41 (COLO)]
+    COLOR      reduce usando la regla 34 (VALOR)
+    COLOR      [reduce usando la regla 41 (COLO)]
+    POS        reduce usando la regla 34 (VALOR)
+    POS        [reduce usando la regla 41 (COLO)]
+    termino    reduce usando la regla 34 (VALOR)
+    termino    [reduce usando la regla 41 (COLO)]
+    $default   reduce usando la regla 34 (VALOR)
+
+
+Estado 62
+
+   14 ASIG_VALOR: DAVALOR $@4 IDENTIFICADOR IGUAL $@5 VARIABLE .
+
+    $default  reduce usando la regla 14 (ASIG_VALOR)
+
+
+Estado 63
+
+   15 VARIABLE: VALOR .
+
+    $default  reduce usando la regla 15 (VARIABLE)
+
+
+Estado 64
+
+   16 VARIABLE: COLO .
+
+    $default  reduce usando la regla 16 (VARIABLE)
+
+
+Estado 65
+
+   11 ASIG_COLOR: COLOR $@2 A_PARENTESIS $@3 COLO C_PARENTESIS .
+
+    $default  reduce usando la regla 11 (ASIG_COLOR)
+
+
+Estado 66
+
+   21 ASIG_POS: POS $@6 A_PARENTESIS $@7 VALOR COMA . $@8 VALOR C_PARENTESIS
+
+    $default  reduce usando la regla 20 ($@8)
+
+    $@8  ir al estado 67
+
+
+Estado 67
+
+   21 ASIG_POS: POS $@6 A_PARENTESIS $@7 VALOR COMA $@8 . VALOR C_PARENTESIS
+
+    CONST  desplazar e ir al estado 42
+    ID     desplazar e ir al estado 43
+
+    VALOR  ir al estado 68
+
+
+Estado 68
+
+   21 ASIG_POS: POS $@6 A_PARENTESIS $@7 VALOR COMA $@8 VALOR . C_PARENTESIS
+
+    C_PARENTESIS  desplazar e ir al estado 69
+
+
+Estado 69
+
+   21 ASIG_POS: POS $@6 A_PARENTESIS $@7 VALOR COMA $@8 VALOR C_PARENTESIS .
+
+    $default  reduce usando la regla 21 (ASIG_POS)

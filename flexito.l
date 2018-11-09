@@ -20,7 +20,7 @@ opAritmetico "+"|"-"|"*"|"/"|"**"
 
 %%
 
-{entero} 											{yylval.tipo_entero=atoi(yytext);return CONST;}
+{entero} 											{yylval.string=yytext;return CONST;}
 
 
 
@@ -34,15 +34,15 @@ opAritmetico "+"|"-"|"*"|"/"|"**"
 "aba"|"ABA"											{return ABAJO;}
 "der"|"DER"											{return DERECHA;}
 "izq"|"IZQ"											{return IZQUIERDA;}
-"rojo"|"ROJO"										{return ROJO;}
-"verde"|"VERDE"										{return VERDE;}
-"azul"|"AZUL"										{return AZUL;}
-"amarillo"|"AMARILLO"								{return AMARILLO;}
-"blanco"|"BLANCO"									{return BLANCO;}
+"rojo"|"ROJO"										{yylval.string=yytext;return ROJO;}
+"verde"|"VERDE"										{yylval.string=yytext;return VERDE;}
+"azul"|"AZUL"										{yylval.string=yytext;return AZUL;}
+"amarillo"|"AMARILLO"								{yylval.string=yytext;return AMARILLO;}
+"blanco"|"BLANCO"									{yylval.string=yytext;return BLANCO;}
 "("													{return A_PARENTESIS;}
 ")"													{return C_PARENTESIS;}
 "termino"											{return termino;}
-{identificador}										{return ID;}
+{identificador}										{yylval.string=yytext;return ID;}
 
 . {printf("\n desconocido \n");}
 

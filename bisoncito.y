@@ -14,18 +14,18 @@
 %token ABAJO
 %token DERECHA
 %token IZQUIERDA
-%token ROJO
-%token VERDE
-%token AZUL
-%token AMARILLO
-%token BLANCO
+%token < string >ROJO
+%token < string >VERDE
+%token < string >AZUL
+%token < string >AMARILLO
+%token < string >BLANCO
 
 %token DAVALOR
 %token IGUAL
 %token COLOR
 %token POS
 %token COMA
-%token < tipo_entero > CONST
+%token < string > CONST
 %token < string > ID
 %token A_PARENTESIS
 %token C_PARENTESIS
@@ -33,46 +33,52 @@
 %token editar
 
 %type <tipo_entero> VALOR
-%type <tipo_entero> COLO
+%type <string> COLO
+%type <string> VARIABLE
+%type <string> IDENTIFICADOR
 
 %start PROG
 %% 
-	PROG: editar INST TERMINO;
+	PROG: editar {printf("EDITAR");} INST TERMINO;
 
 	INST: INST INST 
-         | ASIG_COLOR
+         | ASIG_COLOR 
          | ASIG_POS
          | MOVER
          | ASIG_VALOR
-          ;
+         ;
 
-	TERMINO: termino  {exit(0);};
+	TERMINO: termino  {printf("TERMINO");exit(0);};
 
-	ASIG_COLOR:
-			COLOR A_PARENTESIS COLO C_PARENTESIS   { printf(" el color se cambiara"); };
+	ASIG_COLOR: COLOR {printf("COLOR");} A_PARENTESIS {printf("(");} COLO C_PARENTESIS {printf(")");}
+			;
 	
-	ASIG_VALOR: DAVALOR ID IGUAL VALOR  {printf("Se le asigna valor");}
-               | DAVALOR ID IGUAL COLO	{printf(" se le asigna color"); }
+	ASIG_VALOR: DAVALOR {printf("DAVALOR ");} IDENTIFICADOR IGUAL {printf(" = ");} VARIABLE
                 ;
+                
+    VARIABLE: VALOR {$$ = $1;}
+    		  |COLO {$$ = $1;}
+    		  ;
+   	IDENTIFICADOR: ID {$$=$1; printf("ID:%s",$$);};
+                
+	ASIG_POS: POS{printf("POS");}  A_PARENTESIS{printf("(");}  VALOR COMA {printf(",");} VALOR  C_PARENTESIS {printf(")");}
 	
-	ASIG_POS: POS  A_PARENTESIS  VALOR COMA VALOR  C_PARENTESIS	{ printf("Se asigna pocisión al puntero"); };
-	
-	MOVER:   DERECHA A_PARENTESIS VALOR C_PARENTESIS	{ printf(" Derecha"); }
-           | IZQUIERDA A_PARENTESIS VALOR C_PARENTESIS	{ printf(" Izquierda"); }
-           | ARRIBA A_PARENTESIS VALOR C_PARENTESIS		{ printf(" Arriba"); }
-           | ABAJO A_PARENTESIS VALOR C_PARENTESIS		{ printf(" abajo"); }
+	MOVER:   DERECHA {printf("DERECHA");} A_PARENTESIS {printf("(");} VALOR C_PARENTESIS {printf(")");}	
+           | IZQUIERDA {printf("IZQUIERDA");} A_PARENTESIS {printf("(");} VALOR C_PARENTESIS {printf(")");}	
+           | ARRIBA {printf("ARRIBA");} A_PARENTESIS {printf("(");} VALOR C_PARENTESIS {printf(")");}
+           | ABAJO { printf("ABAJO"); } A_PARENTESIS {printf("(");} VALOR C_PARENTESIS	{printf(")");}
            ;
 	
-	VALOR:   ID		{$$ = $1; printf("ID"); }
-           | CONST	{$$ = $1; printf("Constante"); }
+	VALOR:   ID		{$$ = $1; printf("ID:%s",$$); }
+           | CONST	{$$ = $1; printf("CONSTANTE:%s",$$); }
            ;
     
-    COLO:   ROJO    { printf(" rojo"); }
-          | VERDE	{ printf(" verde"); }
-          | AZUL	{ printf(" azul"); }
-          | AMARILLO{ printf(" amarillo"); }
-          | BLANCO	{ printf(" blanco"); }
-          | ID 		{$$ = $1;printf("ID: %d",$$); }
+    COLO:   ROJO    {$$ = $1; printf("COLOR:%s",$$); }
+          | VERDE	{$$ = $1; printf("COLOR:%s",$$); }
+          | AZUL	{$$ = $1; printf("COLOR:%s",$$); }
+          | AMARILLO{$$ = $1; printf("COLOR:%s",$$); }
+          | BLANCO	{$$ = $1; printf("COLOR:%s",$$); }
+          | ID 		{$$ = $1; printf("ID:%s",$$); }
           ;
 
 %%

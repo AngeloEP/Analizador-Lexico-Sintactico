@@ -837,111 +837,111 @@ do_action:	/* This label is used only to access EOF actions. */
 case 1:
 YY_RULE_SETUP
 #line 23 "flexito.l"
-{yylval=atoi(yytext);return CONST;}
+{yylval.string=yytext;return CONST;}
 	YY_BREAK
 case 2:
 YY_RULE_SETUP
-#line 25 "flexito.l"
+#line 27 "flexito.l"
 {return editar;}
 	YY_BREAK
 case 3:
 YY_RULE_SETUP
-#line 26 "flexito.l"
+#line 28 "flexito.l"
 {return COMA;}
 	YY_BREAK
 case 4:
 YY_RULE_SETUP
-#line 27 "flexito.l"
+#line 29 "flexito.l"
 {return POS;}
 	YY_BREAK
 case 5:
 YY_RULE_SETUP
-#line 28 "flexito.l"
+#line 30 "flexito.l"
 {return COLOR;}
 	YY_BREAK
 case 6:
 YY_RULE_SETUP
-#line 29 "flexito.l"
+#line 31 "flexito.l"
 {return DAVALOR;}
 	YY_BREAK
 case 7:
 YY_RULE_SETUP
-#line 30 "flexito.l"
+#line 32 "flexito.l"
 {return IGUAL;}
 	YY_BREAK
 case 8:
 YY_RULE_SETUP
-#line 31 "flexito.l"
+#line 33 "flexito.l"
 {return ARRIBA;}
 	YY_BREAK
 case 9:
 YY_RULE_SETUP
-#line 32 "flexito.l"
+#line 34 "flexito.l"
 {return ABAJO;}
 	YY_BREAK
 case 10:
 YY_RULE_SETUP
-#line 33 "flexito.l"
+#line 35 "flexito.l"
 {return DERECHA;}
 	YY_BREAK
 case 11:
 YY_RULE_SETUP
-#line 34 "flexito.l"
+#line 36 "flexito.l"
 {return IZQUIERDA;}
 	YY_BREAK
 case 12:
 YY_RULE_SETUP
-#line 35 "flexito.l"
-{return ROJO;}
+#line 37 "flexito.l"
+{yylval.string=yytext;return ROJO;}
 	YY_BREAK
 case 13:
 YY_RULE_SETUP
-#line 36 "flexito.l"
-{return VERDE;}
+#line 38 "flexito.l"
+{yylval.string=yytext;return VERDE;}
 	YY_BREAK
 case 14:
 YY_RULE_SETUP
-#line 37 "flexito.l"
-{return AZUL;}
+#line 39 "flexito.l"
+{yylval.string=yytext;return AZUL;}
 	YY_BREAK
 case 15:
 YY_RULE_SETUP
-#line 38 "flexito.l"
-{return AMARILLO;}
+#line 40 "flexito.l"
+{yylval.string=yytext;return AMARILLO;}
 	YY_BREAK
 case 16:
 YY_RULE_SETUP
-#line 39 "flexito.l"
-{return BLANCO;}
+#line 41 "flexito.l"
+{yylval.string=yytext;return BLANCO;}
 	YY_BREAK
 case 17:
 YY_RULE_SETUP
-#line 40 "flexito.l"
+#line 42 "flexito.l"
 {return A_PARENTESIS;}
 	YY_BREAK
 case 18:
 YY_RULE_SETUP
-#line 41 "flexito.l"
+#line 43 "flexito.l"
 {return C_PARENTESIS;}
 	YY_BREAK
 case 19:
 YY_RULE_SETUP
-#line 42 "flexito.l"
+#line 44 "flexito.l"
 {return termino;}
 	YY_BREAK
 case 20:
 YY_RULE_SETUP
-#line 43 "flexito.l"
-{return ID;}
+#line 45 "flexito.l"
+{yylval.string=yytext;return ID;}
 	YY_BREAK
 case 21:
 YY_RULE_SETUP
-#line 45 "flexito.l"
+#line 47 "flexito.l"
 {printf("\n desconocido \n");}
 	YY_BREAK
 case 22:
 YY_RULE_SETUP
-#line 47 "flexito.l"
+#line 49 "flexito.l"
 ECHO;
 	YY_BREAK
 #line 948 "lex.yy.c"
@@ -1945,7 +1945,7 @@ void yyfree (void * ptr )
 
 #define YYTABLES_NAME "yytables"
 
-#line 47 "flexito.l"
+#line 49 "flexito.l"
 
 
 
