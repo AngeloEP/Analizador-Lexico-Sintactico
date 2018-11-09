@@ -4,6 +4,12 @@
       #include<stdlib.h>
       extern FILE *yyin;
 %}
+
+%union{
+      int tipo_entero;
+      char* string;
+}
+
 %token ARRIBA
 %token ABAJO
 %token DERECHA
@@ -19,15 +25,17 @@
 %token COLOR
 %token POS
 %token COMA
-%token CONST
-%token ID
+%token < tipo_entero > CONST
+%token < string > ID
 %token A_PARENTESIS
 %token C_PARENTESIS
 %token termino
 %token editar
 
-%start PROG
+%type <tipo_entero> VALOR
+%type <tipo_entero> COLO
 
+%start PROG
 %% 
 	PROG: editar INST TERMINO;
 
@@ -64,7 +72,7 @@
           | AZUL	{ printf(" azul"); }
           | AMARILLO{ printf(" amarillo"); }
           | BLANCO	{ printf(" blanco"); }
-          | ID 		{$$ = $1; printf("ID");}
+          | ID 		{$$ = $1;printf("ID: %d",$$); }
           ;
 
 %%

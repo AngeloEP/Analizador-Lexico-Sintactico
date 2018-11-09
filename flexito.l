@@ -20,7 +20,9 @@ opAritmetico "+"|"-"|"*"|"/"|"**"
 
 %%
 
-{entero} 											{yylval=atoi(yytext);return CONST;}
+{entero} 											{yylval.tipo_entero=atoi(yytext);return CONST;}
+
+
 
 "editar"											{return editar;}
 ","													{return COMA;}
